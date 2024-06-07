@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
+st.set_option('server.headless', True)
+
 def process_test_status(data):
     # Filter rows where 'isHeading' is not 'true'
     filtered_data = data[data['isHeading'] != 'true']
