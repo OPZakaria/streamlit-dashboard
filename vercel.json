@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "dashboard.py",
-      "use": "@vercel/python3.11.7"
+      "use": "@vercel/python3"
     }
   ],
   "routes": [
