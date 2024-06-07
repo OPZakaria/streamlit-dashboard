@@ -1,0 +1,10 @@
+*.md
+*.csv
+*.xlsx
+*.png
+*.jpg
+*.jpeg
+__pycache__/
+.venv/
+venv/
+.git/
