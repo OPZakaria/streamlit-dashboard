@@ -74,7 +74,7 @@ def load_and_analyze(file):
         st.error("No relevant data found in the selected file.")
 
 st.title('Analyse de la Traçabilité des Produits des Batteries')
-st.image("C:\\Test\\Capture.PNG", width=800)
+st.image("C:\\Users\\Bruger\\OneDrive\\Bureau\\Capture.PNG", width=800)
 
 uploaded_file = st.file_uploader("Choisir un fichier Excel", type="xlsx")
 

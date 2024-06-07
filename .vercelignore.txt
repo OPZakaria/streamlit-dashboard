@@ -1,6 +1,18 @@
-*.md
+# Ignore data files
 *.csv
 *.xlsx
 *.png
 *.jpg
 *.jpeg
+
+# Ignore environment files
+.env
+.venv/
+venv/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
