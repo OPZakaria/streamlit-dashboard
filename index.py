@@ -1,13 +1,9 @@
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
 def process_test_status(data):
-<<<<<<< HEAD
-    filtered_data = data[data['isHeading'] != 'true']
-    status_counts = filtered_data['TEST_Status'].value_counts()
-    total_count = status_counts.sum()
-=======
     # Filter rows where 'isHeading' is not 'true'
     filtered_data = data[data['isHeading'] != 'true']
     
@@ -18,22 +14,11 @@ def process_test_status(data):
     total_count = status_counts.sum()
     
     # Create a DataFrame for display
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
     status_df = pd.DataFrame({
         'Status': status_counts.index,
         'Count': status_counts.values,
         'Percentage': (status_counts.values / total_count) * 100
     })
-<<<<<<< HEAD
-    return status_df
-
-def process_verifies_link(data):
-    filtered_data = data[(data['Artifact Type'] == 'Test Plan') & (data['isHeading'] != 'True')]
-    total_test_plans = len(filtered_data)
-    verified_count = filtered_data['Link:Verifies (<)'].notna().sum()
-    verified_percent = (verified_count / total_test_plans) * 100
-    not_verified_percent = 100 - verified_percent
-=======
     
     return status_df
 
@@ -50,23 +35,11 @@ def process_verifies_link(data):
     not_verified_percent = 100 - verified_percent
     
     # Create a DataFrame for display
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
     verifies_df = pd.DataFrame({
         'Status': ['Verified', 'Not Verified'],
         'Percentage': [verified_percent, not_verified_percent],
         'Count': [verified_count, total_test_plans - verified_count]
     })
-<<<<<<< HEAD
-    return verifies_df
-
-def process_satisfied_link(data):
-    total_req = len(data)
-    functional_req = data[data['Req_type'] == 'Functional Req']
-    total_functional_req = len(functional_req)
-    functional_req_with_link = functional_req['Link:Satisfied by (>)'].notna().sum()
-    functional_req_percentage = (total_functional_req / total_req) * 100
-    functional_req_with_link_percentage = (functional_req_with_link / total_functional_req) * 100 if total_functional_req > 0 else 0
-=======
     
     return verifies_df
 
@@ -84,20 +57,14 @@ def process_satisfied_link(data):
     functional_req_with_link_percentage = (functional_req_with_link / total_functional_req) * 100 if total_functional_req > 0 else 0
     
     # Create a DataFrame for display
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
     satisfied_df = pd.DataFrame({
         'Description': ['Functional Req %', 'Other Req %', '% Functional Req with Link', '% Functional Req without Link'],
         'Percentage': [functional_req_percentage, 100 - functional_req_percentage, functional_req_with_link_percentage, 100 - functional_req_with_link_percentage]
     })
-<<<<<<< HEAD
-    return satisfied_df
-
-=======
     
     return satisfied_df
 
 
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
 def load_and_analyze(file):
     data = pd.read_excel(file, engine='openpyxl')
     
@@ -105,11 +72,8 @@ def load_and_analyze(file):
         st.write("Processing TEST_Status data...")
         status_df = process_test_status(data)
         st.dataframe(status_df)
-<<<<<<< HEAD
-=======
         
         # Create pie chart
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
         fig, ax = plt.subplots()
         ax.pie(status_df['Percentage'], labels=status_df['Status'], autopct='%1.1f%%', startangle=90)
         ax.set_title("TEST_Status Distribution")
@@ -119,11 +83,8 @@ def load_and_analyze(file):
         st.write("Processing Link:Verifies data...")
         verifies_df = process_verifies_link(data)
         st.dataframe(verifies_df)
-<<<<<<< HEAD
-=======
         
         # Create pie chart
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
         fig, ax = plt.subplots()
         ax.pie(verifies_df['Percentage'], labels=verifies_df['Status'], autopct='%1.1f%%', startangle=90)
         ax.set_title("Percentage of Test Plans Verified")
@@ -133,13 +94,6 @@ def load_and_analyze(file):
         st.write("Processing Link:Satisfied data...")
         satisfied_df = process_satisfied_link(data)
         st.dataframe(satisfied_df)
-<<<<<<< HEAD
-        fig, ax = plt.subplots(1, 2, figsize=(12, 6))
-        ax[0].pie([satisfied_df['Percentage'][0], satisfied_df['Percentage'][1]], labels=['Functional Req', 'Other Req'], autopct='%1.1f%%', startangle=90)
-        ax[0].set_title("Functional Req vs Other Req")
-        ax[1].pie([satisfied_df['Percentage'][2], satisfied_df['Percentage'][3]], labels=['With Link', 'Without Link'], autopct='%1.1f%%', startangle=90)
-        ax[1].set_title("Functional Req with Link")
-=======
         
         # Create pie charts
         fig, ax = plt.subplots(1, 2, figsize=(12, 6))
@@ -150,16 +104,10 @@ def load_and_analyze(file):
         ax[1].pie([satisfied_df['Percentage'][2], satisfied_df['Percentage'][3]], labels=['With Link', 'Without Link'], autopct='%1.1f%%', startangle=90)
         ax[1].set_title("Functional Req with Link")
         
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
         st.pyplot(fig)
     else:
         st.error("No relevant data found in the selected file.")
 
-<<<<<<< HEAD
-st.title('Analyse de la Traçabilité des Produits des Batteries')
-st.image("C:\\Users\\Bruger\\OneDrive\\Bureau\\Capture.PNG", width=800)
-
-=======
 # Streamlit dashboard configuration
 st.title('Analyse de la Traçabilité des Produits des Batteries')
 
@@ -167,14 +115,8 @@ st.title('Analyse de la Traçabilité des Produits des Batteries')
 st.image("C:\\Users\\zakariae.haddi\\OneDrive - PLASTIC OMNIUM\\Bureau\\Stage\\Python\\Capture.PNG", width=800)
 
 # Upload Excel file
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
 uploaded_file = st.file_uploader("Choisir un fichier Excel", type="xlsx")
 
 if uploaded_file is not None:
     st.success('Fichier chargé avec succès')
     load_and_analyze(uploaded_file)
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46

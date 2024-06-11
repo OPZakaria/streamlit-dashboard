@@ -2,3 +2,7 @@ streamlit
 pandas
 matplotlib
 openpyxl
+<<<<<<< HEAD
+=======
+numpy
+>>>>>>> 171e7697db2f960838601ad359ce4d6fe6e87e46
